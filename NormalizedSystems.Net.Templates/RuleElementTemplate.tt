@@ -1,0 +1,66 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+    public class <#= this.model.FullName #> : NormalizedSystems.Net.RuleElement
+	{
+		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };
+
+<#  foreach(var evt in model.Events) { #>
+		public <#= evt.FullName #> <#= evt.Name #>
+        {
+            get
+            {
+                return Events["<#= evt.Name #>"].Cast<<#= evt.FullName #>>();
+            }
+            set
+            {
+				Events["<#= evt.Name #>"] = value;
+            }
+        }
+
+<#  } #>
+<#  foreach(var condition in model.Conditions) { #>
+		public <#= condition.FullName #> <#= condition.Name #>
+        {
+            get
+            {
+                return Conditions["<#= condition.Name #>"].Cast<<#= condition.FullName #>>();
+            }
+            set
+            {
+				Conditions["<#= condition.Name #>"] = value;
+            }
+        }
+
+<#  } #>
+<#  foreach(var action in model.Actions) { #>
+		public <#= action.FullName #> <#= action.Name #>
+        {
+            get
+            {
+                return Actions["<#= action.Name #>"].Cast<<#= action.FullName #>>();
+            }
+            set
+            {
+				Actions["<#= action.Name #>"] = value;
+            }
+        }
+
+<#  } #>
+
+		public <#= model.FullName #>()
+        {
+<#  foreach(var evt in model.Events) { #>
+            Events["<#= evt.Name #>"] = new <#= evt.FullName #>();
+<#  } #>
+<#  foreach(var condition in model.Conditions) { #>
+            Conditions["<#= condition.Name #>"] = new <#= condition.FullName #>();
+<#  } #>
+<#  foreach(var action in model.Actions) { #>
+            Actions["<#= action.Name #>"] = new <#= action.FullName #>();
+<#  } #>
+        }
+	}
+

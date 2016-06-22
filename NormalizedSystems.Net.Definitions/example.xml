@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application>
+  <FieldElements>
+    <FieldElement Name="Field01" Type="String" Version="1" />
+    <FieldElement Name="Field01" Type="Int32" Version="2" />
+  </FieldElements>
+  <DataElements>
+    <DataElement Name="Data01" Version="1">
+      <Fields>
+        <Field Name="Field01" Version="1" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Data01" Version="2">
+      <Fields>
+        <Field Name="Field01" Version="2" /> 
+      </Fields>
+    </DataElement>
+    <DataElement Name="Data02" Version="1">
+      <Fields>
+        <Field Name="Field01" Version="2" />
+      </Fields>
+    </DataElement>
+  </DataElements>
+  <EventElements>
+    <EventElement Name="Event01" Version="1">
+      <DataFields>
+        <Field Name="Field01" Version="1"/>
+      </DataFields>
+      <ContentData>
+        <Data Name="Data01" Version="1"/>
+      </ContentData>
+    </EventElement>
+  </EventElements>
+  <ActionElements>
+    <ActionElement Name="Action01" Version="1">
+      <InputData>
+        <Data Name="Data01" Version="1"/>
+        <Data Name="Data01" Version="2"/>
+        <Data Name="Data01" Version="1"/>
+      </InputData>
+      <OutputEvents>
+        <Event Name="Event01" Version="1"/>
+      </OutputEvents>
+    </ActionElement>
+  </ActionElements>
+  <ConditionElements>
+    <ConditionElement Name="Condition01" Version="1">
+      <EventFields>
+        <Field Name="Field01" Version="1"/>
+      </EventFields>
+    </ConditionElement>
+  </ConditionElements>
+  <RuleElements>
+    <RuleElement Name="Rule01" Version="1">
+      <Events>
+        <Event Name="Event01" Version="1"/>
+      </Events>
+      <Conditions>
+        <Condition Name="Condition01" Version="1"/>
+      </Conditions>
+      <Actions>
+        <Action Name="Action01" Version="1"/>
+      </Actions>
+    </RuleElement>
+  </RuleElements>
+</Application>

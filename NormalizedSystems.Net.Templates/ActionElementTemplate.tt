@@ -1,0 +1,49 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+	public partial class <#= model.FullName #> : NormalizedSystems.Net.ActionElement
+	{
+		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };
+
+<#   foreach(var data in model.InputData) { #>
+		public <#= data.FullName #> <#= data.Name #>
+        {
+            get
+            {
+                return InputData["<#= data.Name #>"].Cast<<#= data.FullName #>>();
+            }
+            set
+            {
+				InputData["<#= data.Name #>"] = value;
+            }
+        }
+
+<#   } #>
+<#   foreach(var evt in model.OutputEvents) { #>
+		public <#= evt.FullName #> <#= evt.Name #>
+        {
+            get
+            {
+                return OutputEvents["<#= evt.Name #>"].Cast<<#= evt.FullName #>>();
+            }
+            set
+            {
+				OutputEvents["<#= evt.Name #>"] = value;
+            }
+        }
+
+<#   } #>
+
+		public <#= model.FullName #>()
+        {
+<#   foreach(var data in model.InputData) { #>
+            InputData["<#= data.Name #>"] = new <#= data.FullName #>();
+<#   } #>
+<#   foreach(var evt in model.OutputEvents) { #>
+            OutputEvents["<#= evt.Name #>"] = new <#= evt.FullName #>();
+<#   } #>
+        }
+	}
+

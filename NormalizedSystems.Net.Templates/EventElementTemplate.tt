@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+	public partial class <#= this.model.FullName #> : NormalizedSystems.Net.EventElement
+	{
+		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };
+
+<#	foreach(var data in model.ContentData) { #>
+		public <#= data.FullName #> <#= data.Name #>
+        {
+            get
+            {
+                return ContentData["<#= data.Name #>"].Cast<<#= data.FullName #>>();
+            }
+            set
+            {
+				ContentData["<#= data.Name #>"] = value;
+            }
+        }
+
+<#	} #>
+
+		public <#= model.FullName #>()
+        {
+<#	foreach(var data in model.ContentData) { #>
+            ContentData["<#= data.Name #>"] = new <#= data.FullName #>();
+<#	} #>
+        }
+
+<#	if(model.Version > 1) { #>
+<#		for(uint v = model.Version - 1; v > 0; v--) {
+			var name = model.Name + (v > 1 ? "Version" + v : "");
+#>
+		public static implicit operator <#= name #>(<#= this.model.FullName #> obj)
+        {
+<#			if(v == model.Version - 1) { #>
+            var ret = new <#= name #>();
+			obj.Convert(ret);
+			return ret;
+<#			} else { #>
+				return <#= string.Join("", Enumerable.Range((int)v, (int)model.Version - 1).Select(i => "(" + model.Name + (i > 1 ? "Version" + i : "") + ")").ToArray()) #>obj;
+<#			} #>
+        }
+
+<#		} #>
+<#	} #>
+	}
+

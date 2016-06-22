@@ -1,0 +1,109 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="NormalizedSystems.Net.Definitions" #>
+<#
+    var type = string.Empty;
+
+    switch(this.model.Type)
+    {
+	    case PrimitiveTypes.Byte:
+	    case PrimitiveTypes.UInt8:
+		    type = "byte";
+		    break;
+	    case PrimitiveTypes.Int8:
+		    type = "sbyte";
+		    break;
+	    case PrimitiveTypes.Int16:
+	    case PrimitiveTypes.Short:
+		    type = "short";
+		    break;
+	    case PrimitiveTypes.UInt16:
+	    case PrimitiveTypes.UShort:
+		    type = "ushort";
+		    break;
+	    case PrimitiveTypes.Int32:
+	    case PrimitiveTypes.Integer:
+		    type = "int";
+		    break;
+	    case PrimitiveTypes.UInt32:
+	    case PrimitiveTypes.Unsigned:
+		    type = "uint";
+		    break;
+	    case PrimitiveTypes.Int64:
+	    case PrimitiveTypes.Long:
+		    type = "long";
+		    break;
+	    case PrimitiveTypes.UInt64:
+	    case PrimitiveTypes.ULong:
+		    type = "ulong";
+		    break;
+	    case PrimitiveTypes.Float:
+		    type = "float";
+		    break;
+	    case PrimitiveTypes.Double:
+		    type = "double";
+		    break;
+	    case PrimitiveTypes.Decimal:
+		    type = "decimal";
+		    break;
+	    case PrimitiveTypes.Date:
+	    case PrimitiveTypes.DateTime:
+		    type = "DateTime";
+		    break;
+	    case PrimitiveTypes.Time:
+	    case PrimitiveTypes.TimeSpan:
+		    type = "TimeSpan";
+		    break;
+	    case PrimitiveTypes.Guid:
+		    type = "Guid";
+		    break;
+	    case PrimitiveTypes.String:
+		    type = "string";
+		    break;
+	    case PrimitiveTypes.ByteArray:
+		    type = "byte[]";
+		    break;
+	    default:
+		    throw new NotSupportedException(string.Format("Type {0} not supported", type));
+    }
+#>
+	public partial class <#= this.model.FullName #> : NormalizedSystems.Net.FieldElement<<#= type #>>
+	{	
+		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };
+
+<#	if(model.Version > 1) { #>
+		private <#= model.PreviousVersion #> _base;
+
+		public new <#= type #> Value
+        {
+            get
+            {
+                return base.Value;
+            }
+            set
+            {
+                base.Value = value;
+                Convert(_base);
+            }
+        }
+
+		public <#= this.model.FullName #>()
+        {
+            _base = new <#= model.PreviousVersion #>();
+        }
+
+<#		for(uint v = model.Version - 1; v > 0; v--) {
+			var name = model.Name + (v > 1 ? "Version" + v : "");
+#>
+		public static implicit operator <#= name #>(<#= this.model.FullName #> obj)
+        {
+            return obj._base;
+        }
+
+<#		} #>
+<#	} #>
+	}
+

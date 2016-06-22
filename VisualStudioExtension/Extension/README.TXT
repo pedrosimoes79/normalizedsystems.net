@@ -1,0 +1,1 @@
+﻿To debug this project on new machines you must start as an external program "devenv.exe" with arguments "/rootSuffix Exp"

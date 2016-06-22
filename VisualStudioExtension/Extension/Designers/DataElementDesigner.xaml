@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="NormalizedSystems.Net.Designers.DataElementDesigner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NormalizedSystems.Net.Designers"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <ScrollViewer CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel AllowDrop="False">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFDEDEDE" Offset="0" />
+                    <GradientStop Color="#FFE8E8E8" Offset="1" />
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <StackPanel>
+                <Grid Margin="10,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <Label Content="Versions" Name="lbVersions" />
+                        <WrapPanel>
+                            <ComboBox x:Name="cbVersions">
+                                <ComboBoxItem IsSelected="True">Version 1</ComboBoxItem>
+                                <ComboBoxItem>Version 2</ComboBoxItem>
+                                <ComboBoxItem>Version 3</ComboBoxItem>
+                                <ComboBoxItem>Version 4</ComboBoxItem>
+                            </ComboBox>
+                            <Button x:Name="btAddVersion" Content="Add Version"/>
+                        </WrapPanel>
+                        <Label Content="Properties" Name="lbProperties" />
+                        <DataGrid Name="dgProperties" AutoGenerateColumns="False" MinHeight="300px" CanUserAddRows="True" ItemsSource="{Binding}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                <DataGridComboBoxColumn Header="Type" SelectedValueBinding="{Binding Path=Type}" MinWidth="100">
+                                    <DataGridComboBoxColumn.ItemsSource>
+                                        <CompositeCollection>
+                                            <system:String>Integer</system:String>
+                                            <system:String>Int16</system:String>
+                                            <system:String>Int32</system:String>
+                                            <system:String>String</system:String>
+                                        </CompositeCollection>
+                                    </DataGridComboBoxColumn.ItemsSource>
+                                </DataGridComboBoxColumn>
+                                <DataGridCheckBoxColumn Binding="{Binding Path=Indexed}" Header="Indexed"/>
+                                <DataGridCheckBoxColumn Binding="{Binding Path=Unique}" Header="Unique"/>
+                                <DataGridCheckBoxColumn Binding="{Binding Path=Identity}" Header="Identity"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <!--<StackPanel Grid.Column="1" Margin="10,0,0,0">
+                        <Label Content="Time To Live (TTL)" Name="lbTTL" VerticalAlignment="Top" />
+                        <TextBox Name="tbTTL" Text="5m" />
+                        <Label Content="Service Level Agreement (SLA)" Name="lbSLA" />
+                        <TextBox Name="tbSLA" Text="60s" />
+                    </StackPanel>-->
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

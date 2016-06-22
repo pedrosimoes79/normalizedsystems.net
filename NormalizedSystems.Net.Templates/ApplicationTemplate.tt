@@ -1,0 +1,69 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using NormalizedSystems.Net;
+
+namespace <#= this.codenamespace #>
+{
+<# 
+	foreach(var field in model.FieldElements) 
+	{ 
+#>
+<#= (new FieldElementTemplate(field, model)).TransformText() #><#
+	} 
+#>
+<# 
+	foreach(var data in model.DataElements) 
+	{ 
+#>
+<#= (new DataElementTemplate(data, model)).TransformText() #><#
+	} 
+#>
+<# 
+	foreach(var e in model.EventElements) 
+	{ 
+#>
+<#= (new EventElementTemplate(e, model)).TransformText() #><#
+	} 
+#>
+<# 
+	foreach(var action in model.ActionElements) 
+	{ 
+#>
+<#= (new ActionElementTemplate(action, model)).TransformText() #><#
+	} 
+#>
+<# 
+	foreach(var condition in model.ConditionElements) 
+	{ 
+#>
+<#= (new ConditionElementTemplate(condition, model)).TransformText() #><#
+	} 
+#>
+<# 
+	foreach(var rule in model.RuleElements) 
+	{ 
+#>
+<#= (new RuleElementTemplate(rule, model)).TransformText() #><#
+	} 
+#>
+
+    public partial class <#= model.Name #> : NormalizedSystems.Net.Application
+	{
+        public <#= model.Name #>()
+        {
+<#  foreach(var rule in model.RuleElements) { #>
+            AddRule<<#= rule.FullName #>>();
+<#  } #>
+        }
+	}
+}
+

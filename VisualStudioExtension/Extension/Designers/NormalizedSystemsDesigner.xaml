@@ -1,0 +1,117 @@
+﻿<UserControl  
+            x:Class="NormalizedSystems.Net.Designers.NormalizedSystemsDesigner"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:NormalizedSystems.Net.Designers"
+            xmlns:system="clr-namespace:System;assembly=mscorlib"
+            xmlns:definitions="clr-namespace:NormalizedSystems.Net.Definitions;assembly=NormalizedSystems.Net.Definitions"
+            mc:Ignorable="d" 
+            d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="FieldPivot"        x:Name="FieldPivot"       Source="{Binding Application.FieldElements}" />
+        <CollectionViewSource x:Key="DataPivot"         x:Name="DataPivot"        Source="{Binding Application.DataElements}" />
+        <CollectionViewSource x:Key="EventPivot"        x:Name="EventPivot"       Source="{Binding Application.EventElements}" />
+        <CollectionViewSource x:Key="ActionPivot"       x:Name="ActionPivot"      Source="{Binding Application.ActionElements}" />
+        <CollectionViewSource x:Key="ConditionPivot"    x:Name="ConditionPivot"   Source="{Binding Application.ConditionElements}" />
+        <CollectionViewSource x:Key="RulePivot"         x:Name="RulePivot"        Source="{Binding Application.RuleElements}" />
+        <DataTemplate x:Key="AsteriskTemplate" >
+            <TextBlock
+               Margin="0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               ToolTip="New"
+               Text="*">        
+            </TextBlock>
+        </DataTemplate>
+    </UserControl.Resources>
+    <ScrollViewer CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <TabControl Name="tabs">
+            <TabItem Name="tabApplication" Header="Application">
+                <StackPanel AllowDrop="False">
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFDEDEDE" Offset="0" />
+                            <GradientStop Color="#FFE8E8E8" Offset="1" />
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <StackPanel>
+                        <Grid Margin="10,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition>
+                                </RowDefinition>
+                                <RowDefinition>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>Filter</Label>
+                                    <TextBox Name="tbFilter" Width="200" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,0,10,0">
+                                <Label>Field Elements</Label>
+                                <DataGrid Name="dgFieldElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource FieldPivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Resources>
+                                        <ObjectDataProvider x:Key="fieldTypes" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+                                            <ObjectDataProvider.MethodParameters>
+                                                <x:Type TypeName="definitions:PrimitiveTypes" />
+                                            </ObjectDataProvider.MethodParameters>
+                                        </ObjectDataProvider>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridComboBoxColumn Header="Type" SelectedValueBinding="{Binding Path=Type}" ItemsSource="{Binding Source={StaticResource fieldTypes}, Mode=OneWay}" />
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Label>Data Elements</Label>
+                                <DataGrid Name="dgDataElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource DataPivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Label>Action Elements</Label>
+                                <DataGrid Name="dgActionElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource ActionPivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Grid.Row="1" Margin="10,0,0,0">
+                                <Label>Event Elements</Label>
+                                <DataGrid Name="dgEventElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource EventPivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Label>Condition Elements</Label>
+                                <DataGrid Name="dgConditionElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource ConditionPivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Label>Rule Elements</Label>
+                                <DataGrid Name="dgRuleElements" AutoGenerateColumns="False" Width="Auto" MaxHeight="200px" ItemsSource="{Binding Source={StaticResource RulePivot}}" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="#FFF5F5F5" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" MinWidth="150"/>
+                                        <DataGridTextColumn Binding="{Binding Path=Version}" Header="Version" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </ScrollViewer>
+</UserControl>
