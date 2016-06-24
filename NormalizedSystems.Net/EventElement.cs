@@ -15,6 +15,7 @@ namespace NormalizedSystems.Net
 
         internal Application Application { get; set; }
 
+        [JsonProperty()]
         internal bool Handled { get; set; }
 
         public Dictionary<string, DataElement> ContentData { get; } 

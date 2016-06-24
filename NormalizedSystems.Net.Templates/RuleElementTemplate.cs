@@ -284,7 +284,14 @@ namespace NormalizedSystems.Net.Templates
             
             #line default
             #line hidden
-            this.Write("        }\r\n\t}\r\n\r\n");
+            this.Write("            LogicType = LogicType.");
+            
+            #line 64 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Logic.Trim().ToUpper() == "AND" ? "And" : "Or"));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n        }\r\n\t}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

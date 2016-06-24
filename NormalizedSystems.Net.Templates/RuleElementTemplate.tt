@@ -61,6 +61,7 @@
 <#  foreach(var action in model.Actions) { #>
             Actions["<#= action.Name #>"] = new <#= action.FullName #>();
 <#  } #>
+            LogicType = LogicType.<#= model.Logic.Trim().ToUpper() == "AND" ? "And" : "Or" #>;
         }
 	}
 

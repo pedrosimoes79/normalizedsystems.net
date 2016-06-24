@@ -749,6 +749,38 @@ namespace SandBox
         }
     }
 
+    //Expand V3
+    public partial class LogQuestionsAction : ActionElement
+    {
+        public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "LogQuestionsAction", Version = 1 };
+
+        public Person Person
+        {
+            get
+            {
+                return InputData["Person"].Cast<Person>();
+            }
+            set
+            {
+                InputData["Person"] = value;
+            }
+        }
+
+        public LogQuestionsAction()
+        {
+            InputData["Person"] = new Person();
+        }
+    }
+
+    //Custom V3
+    public partial class LogQuestionsAction
+    {
+        public override void Execute()
+        {
+            Console.WriteLine("{0} - Log: {1}", DateTime.Now.ToString(), Person.PersonName);
+        }
+    }
+
     //Expand V1
     public partial class CheckPersonName : ConditionElement
     {
@@ -1057,6 +1089,57 @@ namespace SandBox
         }
     }
 
+    //Expand V3
+    public class LogQuestionsRule : RuleElement
+    {
+        public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "LogQuestionsRule", Version = 1 };
+
+        public AskFirstNameCompleted AskFirstNameCompleted
+        {
+            get
+            {
+                return Events["AskFirstNameCompleted"].Cast<AskFirstNameCompleted>();
+            }
+            set
+            {
+                Events["AskFirstNameCompleted"] = value;
+            }
+        }
+
+        public AskLastNameCompleted AskLastNameCompleted
+        {
+            get
+            {
+                return Events["AskLastNameCompleted"].Cast<AskLastNameCompleted>();
+            }
+            set
+            {
+                Events["AskLastNameCompleted"] = value;
+            }
+        }
+
+        public LogQuestionsAction LogQuestionsAction
+        {
+            get
+            {
+                return Actions["LogQuestionsAction"].Cast<LogQuestionsAction>();
+            }
+            set
+            {
+                Actions["LogQuestionsAction"] = value;
+            }
+        }
+
+        public LogQuestionsRule()
+        {
+            Events["AskFirstNameCompleted"] = new AskFirstNameCompleted();
+            Events["AskLastNameCompleted"] = new AskLastNameCompleted();
+            Actions["LogQuestionsAction"] = new LogQuestionsAction();
+
+            LogicType = LogicType.Or;
+        }
+    }
+
     //Expand V2
     public class HelloWorld : Application
     {
@@ -1068,6 +1151,7 @@ namespace SandBox
             AddRule<SayHelloRule>();
             AddRule<SayHelloRuleVersion2>();
             AddRule<SayHelloCompleteRule>();
+            AddRule<LogQuestionsRule>();
         }
     }
 

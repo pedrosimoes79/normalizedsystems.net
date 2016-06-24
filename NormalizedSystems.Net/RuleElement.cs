@@ -9,6 +9,8 @@ namespace NormalizedSystems.Net
 {
     public abstract class RuleElement : Element
     {
+        public LogicType LogicType { get; protected set; } = LogicType.And;
+
         public Guid CorrelationId { get; internal set; }
 
         public Application Application { get; internal set; }
@@ -24,7 +26,10 @@ namespace NormalizedSystems.Net
 
         private bool checkEvents()
         {
-            return Events.Values.AsParallel().All(e => e.Handled);
+            if(LogicType == LogicType.And)
+                return Events.Values.AsParallel().All(e => e.Handled);
+            else
+                return Events.Values.AsParallel().Any(e => e.Handled);
         }
 
         private bool checkConditions()
@@ -53,6 +58,7 @@ namespace NormalizedSystems.Net
                      from ed in e.ContentData.Values
                      from ad in a.InputData.Values
                      where
+                        e.Handled &&
                         ed.ElementInfo.Name == ad.ElementInfo.Name &&
                         ed.ElementInfo.Version >= ad.ElementInfo.Version
                      select ed).AsParallel().ForAll(result => a.InputData[result.ElementInfo.Name] = result.Clone());

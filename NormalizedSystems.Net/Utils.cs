@@ -14,14 +14,7 @@ namespace NormalizedSystems.Net
     {
         public static T Cast<T>(this object data)
         {
-            if (data == null) return default(T);
-
-            var DataParam = Expression.Parameter(typeof(object), "data");
-            var Body = Expression.Block(Expression.Convert(Expression.Convert(DataParam, data.GetType()), typeof(T)));
-
-            var Run = Expression.Lambda(Body, DataParam).Compile();
-            var ret = (T)Run.DynamicInvoke(data);
-            return ret;
+            return (T) typeof(T).Cast(data);
         }
 
         public static object Cast(this Type type, object data)

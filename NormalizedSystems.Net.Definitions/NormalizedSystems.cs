@@ -30,7 +30,7 @@ namespace NormalizedSystems.Net.Definitions
         {
             this.versionField = ((uint)(1));
         }
-        
+
         [Category("Element")]
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Name
@@ -45,7 +45,7 @@ namespace NormalizedSystems.Net.Definitions
                 this.RaisePropertyChanged("Name");
             }
         }
-        
+
         [Category("Element")]
         [System.Xml.Serialization.XmlAttributeAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(uint), "1")]
@@ -88,7 +88,7 @@ namespace NormalizedSystems.Net.Definitions
     {
 
         private PrimitiveTypes typeField;
-        
+
         [Category("Field Element")]
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public PrimitiveTypes Type
@@ -244,14 +244,15 @@ namespace NormalizedSystems.Net.Definitions
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = true)]
     public partial class RuleElement : Element
     {
-
         private DeepObservableCollection<Element> eventsField;
 
         private DeepObservableCollection<Element> conditionsField;
 
         private DeepObservableCollection<Element> actionsField;
 
-        [Category("Rule Element")]
+        private string logicField = "AND";
+
+        [Category("Rule Element")] 
         [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Event", Form = System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable = false)]
         public DeepObservableCollection<Element> Events
@@ -296,6 +297,22 @@ namespace NormalizedSystems.Net.Definitions
             {
                 this.actionsField = value;
                 this.RaisePropertyChanged("Actions");
+            }
+        }
+
+        [Category("Rule Element")]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute("AND")]
+        public string Logic
+        {
+            get
+            {
+                return this.logicField;
+            }
+            set
+            {
+                this.logicField = value;
+                this.RaisePropertyChanged("Logic");
             }
         }
     }
@@ -347,8 +364,8 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.dataElementsField = value;
-                this.dataElementsField.CollectionChanged += 
-                    (sender, e) => 
+                this.dataElementsField.CollectionChanged +=
+                    (sender, e) =>
                     {
                         this.RaisePropertyChanged("DataElements");
                     };
@@ -423,7 +440,7 @@ namespace NormalizedSystems.Net.Definitions
                 this.RaisePropertyChanged("RuleElements");
             }
         }
-        
+
         [Category("Application")]
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Name

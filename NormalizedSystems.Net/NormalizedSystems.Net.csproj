@@ -58,6 +58,7 @@
     <Compile Include="ActionElement.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="ElementInfo.cs" />
+    <Compile Include="LogicType.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ConditionElement.cs" />
     <Compile Include="Element.cs" />
