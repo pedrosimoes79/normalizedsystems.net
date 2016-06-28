@@ -168,9 +168,9 @@ namespace NormalizedSystems.Net.Designers
         {
             if (BufferDirty || DesignerDirty)
             {
-                int delay = 100;
+                int delay = 10000;
 
-                if ((Environment.TickCount - _dirtyTime) > delay)
+                if (((Environment.TickCount & int.MaxValue) - _dirtyTime) > delay)
                 {
                     // Must not try and sync while XML editor is parsing otherwise we just confuse matters.
                     if (IsXmlEditorParsing)

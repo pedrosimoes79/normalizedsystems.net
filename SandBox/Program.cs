@@ -1159,12 +1159,12 @@ namespace SandBox
     {
         static void Main(string[] args)
         {
-            var field = new PersonIdVersion4() { Value = "P123" };
+            //var field = new PersonIdVersion4() { Value = "P123" };
 
-            Console.WriteLine(field);
-            Console.WriteLine((PersonIdVersion3)field);
-            Console.WriteLine((PersonIdVersion2)field);
-            Console.WriteLine((PersonId)field);
+            //Console.WriteLine(field);
+            //Console.WriteLine((PersonIdVersion3)field);
+            //Console.WriteLine((PersonIdVersion2)field);
+            //Console.WriteLine((PersonId)field);
 
             //var personV2 = new PersonVersion2() { FirstName = new FirstName() { Value = "Hello" }, LastName = new LastName() { Value = "World" } };
 
@@ -1176,26 +1176,26 @@ namespace SandBox
 
             //Console.WriteLine("{0}|{1}", personV1.PersonId, personV1.PersonName);
 
-            var personV3 = new PersonVersion3() { FirstName = new FirstName() { Value = "Hello" }, LastName = new LastName() { Value = "World" } };
+            //var personV3 = new PersonVersion3() { FirstName = new FirstName() { Value = "Hello" }, LastName = new LastName() { Value = "World" } };
 
-            Console.WriteLine("{0}|{1}", personV3.FirstName, personV3.LastName);
+            //Console.WriteLine("{0}|{1}", personV3.FirstName, personV3.LastName);
 
-            var personV2 = (PersonVersion2)personV3;
+            //var personV2 = (PersonVersion2)personV3;
 
-            Console.WriteLine("{0}|{1}|{2}", personV2.PersonId, personV2.FirstName, personV2.LastName);
+            //Console.WriteLine("{0}|{1}|{2}", personV2.PersonId, personV2.FirstName, personV2.LastName);
 
-            var personV1 = (Person)personV2;
+            //var personV1 = (Person)personV2;
 
-            Console.WriteLine("{0}|{1}", personV1.PersonId, personV1.PersonName);
+            //Console.WriteLine("{0}|{1}", personV1.PersonId, personV1.PersonName);
 
             //personV2.PersonId.Value = "PERSON00000321";
-            personV1.PersonId.Value = 321;
+            //personV1.PersonId.Value = 321;
 
-            personV1 = (Person)personV2;
+            //personV1 = (Person)personV2;
 
-            Console.WriteLine("{0}|{1}", personV1.PersonId, personV1.PersonName);
+            //Console.WriteLine("{0}|{1}", personV1.PersonId, personV1.PersonName);
 
-            Console.WriteLine("{0}|{1}|{2}", personV2.PersonId, personV2.FirstName, personV2.LastName);
+            //Console.WriteLine("{0}|{1}|{2}", personV2.PersonId, personV2.FirstName, personV2.LastName);
 
             Task.Run(async () =>
             {

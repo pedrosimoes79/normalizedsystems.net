@@ -157,6 +157,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.contentDataField = value;
+                this.contentDataField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("ContentData"); };
                 this.RaisePropertyChanged("ContentData");
             }
         }
@@ -187,6 +188,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.inputDataField = value;
+                this.inputDataField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("InputData"); };
                 this.RaisePropertyChanged("InputData");
             }
         }
@@ -203,6 +205,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.outputEventsField = value;
+                this.outputEventsField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("OutputEvents"); };
                 this.RaisePropertyChanged("OutputEvents");
             }
         }
@@ -231,6 +234,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.eventsField = value;
+                this.eventsField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("Events"); };
                 this.RaisePropertyChanged("Events");
             }
         }
@@ -264,6 +268,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.eventsField = value;
+                this.eventsField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("Events"); };
                 this.RaisePropertyChanged("Events");
             }
         }
@@ -280,6 +285,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.conditionsField = value;
+                this.conditionsField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("Conditions"); };
                 this.RaisePropertyChanged("Conditions");
             }
         }
@@ -296,6 +302,7 @@ namespace NormalizedSystems.Net.Definitions
             set
             {
                 this.actionsField = value;
+                this.actionsField.CollectionChanged += (sender, e) => { this.RaisePropertyChanged("Actions"); };
                 this.RaisePropertyChanged("Actions");
             }
         }

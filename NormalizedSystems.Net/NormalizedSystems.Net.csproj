@@ -76,7 +76,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd "$(ProjectDir)" &amp;&amp; "$(ProjectDir)nuget.exe" spec &amp;&amp; "$(ProjectDir)nuget.exe" pack  "$(ProjectPath)" -IncludeReferencedProjects</PostBuildEvent>
+    <PostBuildEvent>cd "$(ProjectDir)" &amp;&amp; "$(ProjectDir)nuget.exe" spec &amp;&amp; "$(ProjectDir)nuget.exe" pack  "$(ProjectFileName)" -IncludeReferencedProjects</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

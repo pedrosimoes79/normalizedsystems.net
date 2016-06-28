@@ -1,31 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
-  <TemplateData>
-    <Name>Normalized Systems Application</Name>
-    <Description>An application built based on a normalized architecture.</Description>
-    <Icon>DataElementItemTemplate.ico</Icon>
-    <TemplateID>43873e6e-94e3-43a3-a746-efa0c64e9d6b</TemplateID>
-    <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>4.5.2</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
-    <DefaultName>Normalized Systems Application</DefaultName>
-  </TemplateData>
-  <TemplateContent>
-    <References>
-      <Reference>
-        <Assembly>System</Assembly>
-      </Reference>
-    </References>
-    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.nsd" CustomTool="NormalizedSystemsExpander">Descriptor.nsd</ProjectItem>
-    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.nsd\$fileinputname$.custom.cs">Class.cs</ProjectItem>
-  </TemplateContent>
-  <WizardExtension>
-    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
-    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
-  </WizardExtension>
-  <WizardData>
-    <packages repository="extension" repositoryId="21c61a57-b14d-4716-94ae-7fc98f533b35">
-      <package id="NormalizedSystems.Net" version="0.1.0.0" />
-    </packages>
-  </WizardData>
+    <TemplateData>
+        <Name>Normalized Systems Application</Name>
+        <Description>An application built with a normalized architecture.</Description>
+        <Icon>DataElementItemTemplate.ico</Icon>
+        <TemplateID>43873e6e-94e3-43a3-a746-efa0c64e9d6b</TemplateID>
+        <ProjectType>CSharp</ProjectType>
+        <RequiredFrameworkVersion>4.5.2</RequiredFrameworkVersion>
+        <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+        <DefaultName>Application</DefaultName>
+    </TemplateData>
+    <TemplateContent>
+        <References>
+            <Reference>
+                <Assembly>System</Assembly>
+            </Reference>
+        </References>
+        <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.nsd" CustomTool="NormalizedSystemsExpander">Descriptor.nsd</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.nsd\$fileinputname$.custom.cs">Class.cs</ProjectItem>
+    </TemplateContent>
+    <WizardExtension>
+        <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+        <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+    </WizardExtension>
+    <WizardData>
+        <packages repository="extension" repositoryId="21c61a57-b14d-4716-94ae-7fc98f533b35">
+            <package id="NormalizedSystems.Net" version="0.1.0.0" />
+            <package id="Newtonsoft.Json" version="8.0.3" />
+        </packages>
+    </WizardData>
 </VSTemplate>

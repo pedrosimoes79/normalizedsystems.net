@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -11,41 +12,50 @@ namespace NormalizedSystems.Net
     {
         public LogicType LogicType { get; protected set; } = LogicType.And;
 
-        public Guid CorrelationId { get; internal set; }
+        internal Guid CorrelationId { get; set; }
 
-        public Application Application { get; internal set; }
+        internal Application Application { get; set; }
 
+        [JsonIgnore()]
         public Dictionary<string, EventElement> Events { get; }
                     = new Dictionary<string, EventElement>();
 
+        [JsonIgnore()]
         public Dictionary<string, ConditionElement> Conditions { get; }
                     = new Dictionary<string, ConditionElement>();
 
+        [JsonIgnore()]
         public Dictionary<string, ActionElement> Actions { get; }
                     = new Dictionary<string, ActionElement>();
 
         private bool checkEvents()
         {
-            if(LogicType == LogicType.And)
-                return Events.Values.AsParallel().All(e => e.Handled);
+            if (LogicType == LogicType.And)
+                return Events.Values.All(e => e.Handled);
             else
-                return Events.Values.AsParallel().Any(e => e.Handled);
+                return Events.Values.Any(e => e.Handled);
         }
 
         private bool checkConditions()
         {
             if (Conditions.Count() == 0) return true;
 
-            return Conditions.Values.AsParallel().All(
+            return Conditions.Values.All(
                 c =>
                 {
                     (from ce in c.Events.Values
-                     join e in Events.Values
-                     on ce.ElementInfo.Name equals e.ElementInfo.Name
-                     where e.ElementInfo.Version >= ce.ElementInfo.Version
-                     select e.ElementInfo.Name).AsParallel().ForAll(result => c.Events[result] = Events[result].Clone());
+                     from e in Events.Values
+                     where
+                        e.Handled &&
+                        ce.ElementInfo.Name == e.ElementInfo.Name &&
+                        e.ElementInfo.Version >= ce.ElementInfo.Version
+                     select e.ElementInfo.Name).ToList().ForEach(
+                        result =>
+                        {
+                            c.Events[result] = Events[result].Clone();
+                        });
 
-                    return c.Check();
+                    return c.Events.Values.Any(e => !e.Handled) || c.Check();
                 });
         }
 
@@ -61,19 +71,23 @@ namespace NormalizedSystems.Net
                         e.Handled &&
                         ed.ElementInfo.Name == ad.ElementInfo.Name &&
                         ed.ElementInfo.Version >= ad.ElementInfo.Version
-                     select ed).AsParallel().ForAll(result => a.InputData[result.ElementInfo.Name] = result.Clone());
-
-                    a.OutputEvents.Values.AsParallel().ForAll(
-                        e =>
+                     select ed).ToList().ForEach(
+                        result =>
                         {
-                            e.CorrelationId = CorrelationId;
-                            e.Application = Application;
+                            a.InputData[result.ElementInfo.Name] = result.Clone();
                         });
+
+                    a.OutputEvents.Values.ToList().ForEach(
+                       e =>
+                       {
+                           e.CorrelationId = CorrelationId;
+                           e.Application = Application;
+                       });
 
                     Task.Run(() => a.Execute());
                 });
         }
-        
+
         public bool Evaluate()
         {
             var ret = false;

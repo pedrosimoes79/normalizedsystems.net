@@ -78,19 +78,19 @@ namespace NormalizedSystems.Net.Designers
             this.dgFieldElements.LoadingRow += (sender, e) => { applyAsterisk(sender, e); };
             this.dgRuleElements.LoadingRow += (sender, e) => { applyAsterisk(sender, e); };
 
-            this.tabApplication.MouseLeftButtonDown += (sender, e) => { (DataContext as ViewModel).OnSelectChanged((DataContext as ViewModel).Application); };
+            //this.tabApplication.MouseLeftButtonDown += (sender, e) => { (DataContext as ViewModel).OnSelectChanged((DataContext as ViewModel).Application); };
 
-            this.dgDataElements.MouseDoubleClick += (sender, e) =>
-            {
-                if(dgDataElements.SelectedItem != null)
-                    CloseableTabItem.AddTab(this.tabs, string.Format("Data: {0}", ((Definitions.DataElement)dgDataElements.SelectedItem).Name) , new DataElementDesigner() { DataContext = dgDataElements.SelectedItem });
-            };
+            //this.dgDataElements.MouseDoubleClick += (sender, e) =>
+            //{
+            //    if(dgDataElements.SelectedItem != null)
+            //        CloseableTabItem.AddTab(this.tabs, string.Format("Data: {0}", ((Definitions.DataElement)dgDataElements.SelectedItem).Name) , new DataElementDesigner() { DataContext = dgDataElements.SelectedItem });
+            //};
 
-            this.dgConditionElements.MouseDoubleClick += (sender, e) =>
-            {
-                if (dgDataElements.SelectedItem != null)
-                    CloseableTabItem.AddTab(this.tabs, string.Format("Condition: {0}", ((Definitions.ConditionElement)dgConditionElements.SelectedItem).Name), new ConditionElementDesigner() { DataContext = dgConditionElements.SelectedItem });
-            };
+            //this.dgConditionElements.MouseDoubleClick += (sender, e) =>
+            //{
+            //    if (dgDataElements.SelectedItem != null)
+            //        CloseableTabItem.AddTab(this.tabs, string.Format("Condition: {0}", ((Definitions.ConditionElement)dgConditionElements.SelectedItem).Name), new ConditionElementDesigner() { DataContext = dgConditionElements.SelectedItem });
+            //};
 
             var pivots = new List<CollectionViewSource>();
             var pivot = default(CollectionViewSource);
@@ -134,7 +134,7 @@ namespace NormalizedSystems.Net.Designers
             // otherwise, we should skip and this will be called again
             // once focus is regained
             var viewModel = DataContext as ViewModel;
-            if (viewModel != null && this.IsKeyboardFocusWithin)
+            if (viewModel != null) // && this.IsKeyboardFocusWithin)
             {
                 viewModel.DoIdle();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace NormalizedSystems.Net
 {
     public abstract class ConditionElement : Element
     {
+        [JsonIgnore()]
         public Dictionary<string, EventElement> Events { get; }
                     = new Dictionary<string, EventElement>();
 

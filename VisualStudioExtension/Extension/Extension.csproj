@@ -104,10 +104,15 @@
     <Content Include="..\..\NormalizedSystems.Net\NormalizedSystems.Net.0.1.0.0.nupkg">
       <Link>Packages\NormalizedSystems.Net.0.1.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="packages.config" />
+    <Content Include="Packages\newtonsoft.json.8.0.3.nupkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>

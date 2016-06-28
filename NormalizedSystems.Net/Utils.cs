@@ -35,9 +35,8 @@ namespace NormalizedSystems.Net
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-
-            var json = JsonConvert.SerializeObject(obj, settings);
-            return JsonConvert.DeserializeObject<T>(json, settings);
+            
+            return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(obj, settings), settings);
         }
     }
 }

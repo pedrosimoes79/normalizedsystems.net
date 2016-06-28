@@ -10,15 +10,15 @@ namespace NormalizedSystems.Net
 {
     public abstract class EventElement : Element
     {
-        [JsonProperty()]
-        public Guid CorrelationId { get; internal set; } = Guid.NewGuid();
+        public Guid CorrelationId { get; set; } = Guid.NewGuid();
 
         internal Application Application { get; set; }
 
         [JsonProperty()]
         internal bool Handled { get; set; }
 
-        public Dictionary<string, DataElement> ContentData { get; } 
+        [JsonIgnore()]
+        public Dictionary<string, DataElement> ContentData { get; }
             = new Dictionary<string, DataElement>();
 
         public void Raise()
@@ -36,7 +36,7 @@ namespace NormalizedSystems.Net
              join dest in e.ContentData.Values
              on orig.ElementInfo.Name equals dest.ElementInfo.Name
              where orig.ElementInfo.Version >= dest.ElementInfo.Version
-             select orig.ElementInfo.Name).AsParallel().ForAll(
+             select orig.ElementInfo.Name).ToList().ForEach(
                 result => e.ContentData[result] = ContentData[result]);
         }
     }
