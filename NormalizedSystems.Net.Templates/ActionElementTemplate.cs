@@ -18,7 +18,7 @@ namespace NormalizedSystems.Net.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+    #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ActionElementTemplate : ActionElementTemplateBase
     {
@@ -28,9 +28,30 @@ namespace NormalizedSystems.Net.Templates
         /// </summary>
         public virtual string TransformText()
         {
+            
+            #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+
+    // This file is part of NormalizedSystems.Net
+    // 
+    // NormalizedSystems.Net is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    // 
+    // NormalizedSystems.Net is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    // 
+    // You should have received a copy of the GNU General Public License
+    // along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+            
+            #line default
+            #line hidden
             this.Write("\tpublic partial class ");
             
-            #line 6 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 22 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.FullName));
             
             #line default
@@ -38,83 +59,83 @@ namespace NormalizedSystems.Net.Templates
             this.Write(" : NormalizedSystems.Net.ActionElement\r\n\t{\r\n\t\tpublic override ElementInfo Element" +
                     "Info { get; } = new ElementInfo() { Name = \"");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("\", Version = ");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Version));
             
             #line default
             #line hidden
             this.Write(" };\r\n\r\n");
             
-            #line 10 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 26 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    foreach(var data in model.InputData) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return InputData[\"");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tInputData[\"");
             
-            #line 19 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 23 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 39 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    } 
             
             #line default
             #line hidden
             
-            #line 24 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 40 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    foreach(var evt in model.OutputEvents) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 25 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 25 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
@@ -122,90 +143,90 @@ namespace NormalizedSystems.Net.Templates
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return OutputEvents[" +
                     "\"");
             
-            #line 29 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 29 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tOutputEvents[\"");
             
-            #line 33 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 49 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 37 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 53 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\tpublic ");
             
-            #line 39 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 55 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.FullName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n");
             
-            #line 41 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 57 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    foreach(var data in model.InputData) { 
             
             #line default
             #line hidden
             this.Write("            InputData[\"");
             
-            #line 42 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 58 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 42 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 58 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(data.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 43 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    } 
             
             #line default
             #line hidden
             
-            #line 44 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 60 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    foreach(var evt in model.OutputEvents) { 
             
             #line default
             #line hidden
             this.Write("            OutputEvents[\"");
             
-            #line 45 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 61 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 45 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 61 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 46 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
+            #line 62 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ActionElementTemplate.tt"
    } 
             
             #line default

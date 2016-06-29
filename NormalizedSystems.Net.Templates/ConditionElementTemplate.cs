@@ -18,7 +18,7 @@ namespace NormalizedSystems.Net.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+    #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ConditionElementTemplate : ConditionElementTemplateBase
     {
@@ -28,9 +28,30 @@ namespace NormalizedSystems.Net.Templates
         /// </summary>
         public virtual string TransformText()
         {
+            
+            #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+
+    // This file is part of NormalizedSystems.Net
+    // 
+    // NormalizedSystems.Net is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    // 
+    // NormalizedSystems.Net is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    // 
+    // You should have received a copy of the GNU General Public License
+    // along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+            
+            #line default
+            #line hidden
             this.Write("\tpublic partial class ");
             
-            #line 6 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 22 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
@@ -38,98 +59,98 @@ namespace NormalizedSystems.Net.Templates
             this.Write(" : NormalizedSystems.Net.ConditionElement\r\n\t{\r\n\t\tpublic override ElementInfo Elem" +
                     "entInfo { get; } = new ElementInfo() { Name = \"");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("\", Version = ");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Version));
             
             #line default
             #line hidden
             this.Write(" };\r\n\r\n");
             
-            #line 10 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 26 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
    foreach(var evt in model.Events) { 
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return Events[\"");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tEvents[\"");
             
-            #line 19 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 23 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 39 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
    } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\tpublic ");
             
-            #line 25 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.FullName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n");
             
-            #line 27 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
    foreach(var evt in model.Events) { 
             
             #line default
             #line hidden
             this.Write("            Events[\"");
             
-            #line 28 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 44 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 28 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 44 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 29 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ConditionElementTemplate.tt"
    } 
             
             #line default

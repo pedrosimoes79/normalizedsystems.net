@@ -18,7 +18,7 @@ namespace NormalizedSystems.Net.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+    #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class RuleElementTemplate : RuleElementTemplateBase
     {
@@ -28,9 +28,30 @@ namespace NormalizedSystems.Net.Templates
         /// </summary>
         public virtual string TransformText()
         {
+            
+            #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+
+    // This file is part of NormalizedSystems.Net
+    // 
+    // NormalizedSystems.Net is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    // 
+    // NormalizedSystems.Net is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    // 
+    // You should have received a copy of the GNU General Public License
+    // along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+            
+            #line default
+            #line hidden
             this.Write("    public class ");
             
-            #line 6 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 22 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
@@ -38,255 +59,255 @@ namespace NormalizedSystems.Net.Templates
             this.Write(" : NormalizedSystems.Net.RuleElement\r\n\t{\r\n\t\tpublic override ElementInfo ElementIn" +
                     "fo { get; } = new ElementInfo() { Name = \"");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("\", Version = ");
             
-            #line 8 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Version));
             
             #line default
             #line hidden
             this.Write(" };\r\n\r\n");
             
-            #line 10 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 26 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var evt in model.Events) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 11 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return Events[\"");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 15 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tEvents[\"");
             
-            #line 19 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 23 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 39 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 24 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 40 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var condition in model.Conditions) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 25 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 25 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return Conditions[\"");
             
-            #line 29 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 29 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tConditions[\"");
             
-            #line 33 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 49 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 37 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 53 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 38 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 54 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var action in model.Actions) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 39 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 55 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 39 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 55 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return Actions[\"");
             
-            #line 43 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 43 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tActions[\"");
             
-            #line 47 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 63 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 51 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 67 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\tpublic ");
             
-            #line 53 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 69 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.FullName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n");
             
-            #line 55 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 71 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var evt in model.Events) { 
             
             #line default
             #line hidden
             this.Write("            Events[\"");
             
-            #line 56 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 72 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 56 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 72 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(evt.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 57 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 73 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 58 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 74 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var condition in model.Conditions) { 
             
             #line default
             #line hidden
             this.Write("            Conditions[\"");
             
-            #line 59 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 75 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 59 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 75 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(condition.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 60 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 76 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 61 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 77 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   foreach(var action in model.Actions) { 
             
             #line default
             #line hidden
             this.Write("            Actions[\"");
             
-            #line 62 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 78 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 62 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 78 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(action.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 63 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 79 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("            LogicType = LogicType.");
             
-            #line 64 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
+            #line 80 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\RuleElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Logic.Trim().ToUpper() == "AND" ? "And" : "Or"));
             
             #line default

@@ -19,7 +19,7 @@ namespace NormalizedSystems.Net.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+    #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class FieldElementTemplate : FieldElementTemplateBase
     {
@@ -30,7 +30,28 @@ namespace NormalizedSystems.Net.Templates
         public virtual string TransformText()
         {
             
-            #line 7 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 1 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+
+    // This file is part of NormalizedSystems.Net
+    // 
+    // NormalizedSystems.Net is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    // 
+    // NormalizedSystems.Net is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    // 
+    // You should have received a copy of the GNU General Public License
+    // along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+            
+            #line default
+            #line hidden
+            
+            #line 23 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
 
     var type = string.Empty;
 
@@ -102,14 +123,14 @@ namespace NormalizedSystems.Net.Templates
             #line hidden
             this.Write("\tpublic partial class ");
             
-            #line 73 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 89 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
             #line hidden
             this.Write(" : NormalizedSystems.Net.FieldElement<");
             
-            #line 73 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 89 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type));
             
             #line default
@@ -117,35 +138,35 @@ namespace NormalizedSystems.Net.Templates
             this.Write(">\r\n\t{\t\r\n\t\tpublic override ElementInfo ElementInfo { get; } = new ElementInfo() { " +
                     "Name = \"");
             
-            #line 75 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 91 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("\", Version = ");
             
-            #line 75 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 91 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Version));
             
             #line default
             #line hidden
             this.Write(" };\r\n\r\n");
             
-            #line 77 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 93 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
 	if(model.Version > 1) { 
             
             #line default
             #line hidden
             this.Write("\t\tprivate ");
             
-            #line 78 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 94 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.PreviousVersion));
             
             #line default
             #line hidden
             this.Write(" _base;\r\n\r\n\t\tpublic new ");
             
-            #line 80 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 96 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(type));
             
             #line default
@@ -155,21 +176,21 @@ namespace NormalizedSystems.Net.Templates
                     "= value;\r\n                Convert(_base);\r\n            }\r\n        }\r\n\r\n\t\tpublic " +
                     "");
             
-            #line 93 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 109 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n            _base = new ");
             
-            #line 95 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 111 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.PreviousVersion));
             
             #line default
             #line hidden
             this.Write("();\r\n        }\r\n\r\n");
             
-            #line 98 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 114 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
 		for(uint v = model.Version - 1; v > 0; v--) {
 			var name = model.Name + (v > 1 ? "Version" + v : "");
 
@@ -178,27 +199,27 @@ namespace NormalizedSystems.Net.Templates
             #line hidden
             this.Write("\t\tpublic static implicit operator ");
             
-            #line 101 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 117 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 101 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 117 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
             #line hidden
             this.Write(" obj)\r\n        {\r\n            return obj._base;\r\n        }\r\n\r\n");
             
-            #line 106 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 122 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
 		} 
             
             #line default
             #line hidden
             
-            #line 107 "D:\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
+            #line 123 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\FieldElementTemplate.tt"
 	} 
             
             #line default
