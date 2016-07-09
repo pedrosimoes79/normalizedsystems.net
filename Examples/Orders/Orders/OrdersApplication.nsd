@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OrdersApplication">
+  <FieldElements>
+    <FieldElement Name="Description" Type="String" />
+    <FieldElement Name="Value" Type="Decimal" />
+  </FieldElements>
+  <DataElements>
+    <DataElement Name="Order">
+      <Fields>
+        <Field Name="Description" />
+        <Field Name="Value" />
+      </Fields>
+    </DataElement>
+  </DataElements>
+  <EventElements>
+    <EventElement Name="FirstApproveEvent">
+      <ContentData>
+        <Data Name="Order" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="SecondApproveEvent">
+      <ContentData>
+        <Data Name="Order" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="NewOrderEvent">
+      <ContentData>
+        <Data Name="Order" />
+      </ContentData>
+    </EventElement>
+  </EventElements>
+  <ActionElements>
+    <ActionElement Name="NewOrderAction">
+      <InputData>
+        <Data Name="Order" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="FirstApproveEvent" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="FirstApproveAction">
+      <InputData>
+        <Data Name="Order" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="SecondApproveEvent" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="SecondApproveAction">
+      <InputData>
+        <Data Name="Order" />
+      </InputData>
+      <OutputEvents />
+    </ActionElement>
+  </ActionElements>
+  <ConditionElements />
+  <RuleElements>
+    <RuleElement Name="NewOrderRule">
+      <Events>
+        <Event Name="NewOrderEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="NewOrderAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="FirstApproveRule">
+      <Events>
+        <Event Name="FirstApproveEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="FirstApproveAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="SecondApproveRule">
+      <Events>
+        <Event Name="SecondApproveEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="SecondApproveAction" />
+      </Actions>
+    </RuleElement>
+  </RuleElements>
+</Application>

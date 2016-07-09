@@ -82,10 +82,14 @@
 	    case PrimitiveTypes.ByteArray:
 		    type = "byte[]";
 		    break;
+		case PrimitiveTypes.Boolean:
+			type = "bool";
+			break;
 	    default:
 		    throw new NotSupportedException(string.Format("Type {0} not supported", type));
     }
 #>
+    [Serializable]
 	public partial class <#= this.model.FullName #> : NormalizedSystems.Net.FieldElement<<#= type #>>
 	{	
 		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };

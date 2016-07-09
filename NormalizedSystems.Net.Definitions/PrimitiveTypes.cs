@@ -47,6 +47,7 @@ namespace NormalizedSystems.Net.Definitions
         TimeSpan,
         Guid,
         String,
-        ByteArray
+        ByteArray,
+        Boolean
     }
 }

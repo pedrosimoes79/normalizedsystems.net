@@ -19,6 +19,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+    [Serializable]
 	public partial class <#= this.model.FullName #> : NormalizedSystems.Net.DataElement
 	{
 		public override ElementInfo ElementInfo { get; } = new ElementInfo() { Name = "<#= model.Name #>", Version = <#= model.Version #> };

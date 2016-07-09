@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NormalizedSystems.Net
 {
@@ -45,9 +46,10 @@ namespace NormalizedSystems.Net
             return field.Value;
         }
     }
-
+    
     public abstract class FieldElement : Element
     {
+        [XmlIgnore]
         public object Value { get; set; }
 
         public override string ToString()

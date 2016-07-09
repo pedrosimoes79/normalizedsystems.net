@@ -26,6 +26,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using VSLangProj80;
 using static NormalizedSystems.Net.Utils;
+using NormalizedSystems.Net.Definitions;
 
 namespace NormalizedSystems.Net.CustomTools
 {
@@ -42,6 +43,14 @@ namespace NormalizedSystems.Net.CustomTools
             var filename = Path.GetFileName(inputfile);
             var name = filename.Substring(0, filename.IndexOf('.'));
 
+            var ext = string.Empty;
+            DefaultExtension(out ext);
+            var outfile = Path.GetFileNameWithoutExtension(inputfile) + ext;
+            var previous = string.Empty;
+
+            if (File.Exists(outfile))
+                previous = File.ReadAllText(outfile);
+
             //Step 1: Xsd validation (syntactic check)
 
             try
@@ -56,7 +65,7 @@ namespace NormalizedSystems.Net.CustomTools
             {
                 pGenerateProgress.GeneratorError(0, 0, string.Format("Error validating file: {0} - {1}", filename, ex.Message), 0xFFFFFFFF, 0xFFFFFFFF);
 
-                return default(string);
+                return previous;
             }
 
             //Step 2: Deserialize descriptor
@@ -75,7 +84,7 @@ namespace NormalizedSystems.Net.CustomTools
             {
                 pGenerateProgress.GeneratorError(0, 0, string.Format("Error validating file: {0} - {1}\r\n{2}", ex.GetType().Name, ex.Message, ex.StackTrace), 0xFFFFFFFF, 0xFFFFFFFF);
 
-                return default(string);
+                return previous;
             }
 
             //Step 3: Semantic checks
@@ -84,10 +93,20 @@ namespace NormalizedSystems.Net.CustomTools
             {
                 pGenerateProgress.GeneratorError(0, 0, string.Format("{0} doesn't match with filename {1}", application.Name, inputfile), 0xFFFFFFFF, 0xFFFFFFFF);
 
-                return default(string);
+                return previous;
             }
 
-            ruleConditionsCheck(pGenerateProgress, application);
+            if(dataFieldsCheck(pGenerateProgress, application) |
+               eventContentDataCheck(pGenerateProgress, application) |
+               actionInputDataCheck(pGenerateProgress, application) |
+               actionOutputEventsCheck(pGenerateProgress, application) |
+               conditionEventsCheck(pGenerateProgress, application) |
+               ruleEventsCheck(pGenerateProgress, application) |
+               ruleConditionsCheck(pGenerateProgress, application) |
+               ruleActionsCheck(pGenerateProgress, application))
+            {
+                return previous;
+            }
 
             //Step 4: Expand code
 
@@ -99,11 +118,249 @@ namespace NormalizedSystems.Net.CustomTools
             {
                 pGenerateProgress.GeneratorError(0, 0, string.Format("Error expanding file: {0} - {1}\r\n{2}", ex.GetType().Name, ex.Message, ex.StackTrace), 0xFFFFFFFF, 0xFFFFFFFF);
 
-                return default(string);
+                return previous;
             }
         }
 
-        private static void ruleConditionsCheck(IVsGeneratorProgress pGenerateProgress, Definitions.Application application)
+        private bool ruleActionsCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from rule in application.RuleElements
+                 from ruleAction in rule.Actions
+                 where 
+                    !application.ActionElements.Any(
+                        action =>
+                            action.Name == ruleAction.Name &&
+                            action.Version == ruleAction.Version)
+                 select
+                     new
+                     {
+                         Rule = rule,
+                         Action = ruleAction
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Action {0} version {1} on Rule {2} version {3} doesn't " +
+                        "match with any existent event on {4} application",
+                        result.Action.Name,
+                        result.Action.Version,
+                        result.Rule.Name,
+                        result.Rule.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool ruleEventsCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from rule in application.RuleElements
+                 from ruleEvent in rule.Events
+                 where
+                    !application.EventElements.Any(
+                        evt =>
+                            evt.Name == ruleEvent.Name &&
+                            evt.Version == ruleEvent.Version)
+                 select
+                     new
+                     {
+                         Rule = rule,
+                         Event = ruleEvent
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Event {0} version {1} on Rule {2} version {3} doesn't " +
+                        "match with any existent event on {4} application",
+                        result.Event.Name,
+                        result.Event.Version,
+                        result.Rule.Name,
+                        result.Rule.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool conditionEventsCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from condition in application.ConditionElements
+                 from conditionEvent in condition.Events
+                 where
+                    !application.EventElements.Any(
+                        evt =>
+                            evt.Name == conditionEvent.Name &&
+                            evt.Version == conditionEvent.Version)
+                 select
+                     new
+                     {
+                         Condition = condition,
+                         Event = conditionEvent
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Event {0} version {1} on Condition {2} version {3} doesn't " +
+                        "match with any existent event on {4} application",
+                        result.Event.Name,
+                        result.Event.Version,
+                        result.Condition.Name,
+                        result.Condition.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool actionOutputEventsCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from action in application.ActionElements
+                 from outputEvent in action.OutputEvents
+                 where
+                    !application.EventElements.Any(
+                        evt =>
+                            evt.Name == outputEvent.Name &&
+                            evt.Version == outputEvent.Version)
+                 select
+                     new
+                     {
+                         Action = action,
+                         Event = outputEvent
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Data {0} version {1} on Event {2} version {3} doesn't " +
+                        "match with any existent data on {4} application",
+                        result.Event.Name,
+                        result.Event.Version,
+                        result.Action.Name,
+                        result.Action.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool actionInputDataCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from action in application.ActionElements
+                 from inputData in action.InputData
+                 where
+                    !application.DataElements.Any(
+                        data =>
+                            data.Name == inputData.Name &&
+                            data.Version == inputData.Version)
+                 select
+                     new
+                     {
+                         Action = action,
+                         Data = inputData
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Data {0} version {1} referenced in Action {2} version {3} doesn't " +
+                        "match with any existent {4} application data",
+                        result.Data.Name,
+                        result.Data.Version,
+                        result.Action.Name,
+                        result.Action.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool eventContentDataCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from evt in application.EventElements
+                 from eventData in evt.ContentData
+                 where
+                    !application.DataElements.Any(
+                        data =>
+                            data.Name == eventData.Name &&
+                            data.Version == eventData.Version)
+                 select
+                     new
+                     {
+                         Event = evt,
+                         Data = eventData
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Data {0} version {1} referenced in Event {2} version {3} doesn't " +
+                        "match with any existent {4} application data",
+                        result.Data.Name,
+                        result.Data.Version,
+                        result.Event.Name,
+                        result.Event.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool dataFieldsCheck(IVsGeneratorProgress pGenerateProgress, Application application)
+        {
+            var query =
+                (from data in application.DataElements
+                 from dataField in data.Fields
+                 where
+                    !application.FieldElements.Any(
+                        field =>
+                            field.Name == dataField.Name &&
+                            field.Version == dataField.Version)
+                 select
+                     new
+                     {
+                         Data = data,
+                         Field = dataField
+                     });
+
+            foreach (var result in query)
+            {
+                pGenerateProgress.GeneratorError(
+                    0, 0,
+                    string.Format(
+                        "Field {0} version {1} referenced in Data {2} version {3} doesn't " +
+                        "match with any existent {4} application field",
+                        result.Field.Name,
+                        result.Field.Version,
+                        result.Data.Name,
+                        result.Data.Version,
+                        application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
+            }
+
+            return query.Count() > 0;
+        }
+
+        private bool ruleConditionsCheck(IVsGeneratorProgress pGenerateProgress, Definitions.Application application)
         {
             var query =
                 (from rule in application.RuleElements
@@ -125,14 +382,16 @@ namespace NormalizedSystems.Net.CustomTools
                 pGenerateProgress.GeneratorError(
                     0, 0,
                     string.Format(
-                        "Condition {0} version {1} on Rule {2} version {3} doesn't " +
-                        "match with any existent condition on {4} application",
+                        "Condition {0} version {1} referenced in Rule {2} version {3} doesn't " +
+                        "match with any existent {4} application condition",
                         result.Condition.Name,
                         result.Condition.Version,
                         result.Rule.Name,
                         result.Rule.Version,
                         application.Name), 0xFFFFFFFF, 0xFFFFFFFF);
             }
+
+            return query.Count() > 0;
         }
     }
 }

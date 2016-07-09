@@ -21,12 +21,14 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NormalizedSystems.Net
 {
     public abstract class DataElement : Element
     {
-        [JsonIgnore()]
+        [JsonIgnore]
+        [XmlIgnore]
         public Dictionary<string, FieldElement> Fields { get; }
             = new Dictionary<string, FieldElement>();
 

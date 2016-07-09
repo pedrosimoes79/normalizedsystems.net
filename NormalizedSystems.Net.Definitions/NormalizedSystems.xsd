@@ -1,186 +1,212 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:simpleType name="Identifier">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="^[A-Z][a-zA-Z0-9]*$" />
-        </xs:restriction>
-    </xs:simpleType>
+  <xs:simpleType name="Identifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[A-Z][a-zA-Z0-9]*$" />
+    </xs:restriction>
+  </xs:simpleType>
 
-    <xs:simpleType name="FieldType">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="Byte|Int8|UInt8|Short|UShort|Int16|UInt16|Integer|Unsigned|Int32|UInt32|Long|ULong|Int64|UInt64|Float|Double|Decimal|Date|Time|DateTime|Timespan|Guid|String|ByteArray" />
-        </xs:restriction>
-    </xs:simpleType>
+  <xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="Byte|Int8|UInt8|Short|UShort|Int16|UInt16|Integer|Unsigned|Int32|UInt32|Long|ULong|Int64|UInt64|Float|Double|Decimal|Date|Time|DateTime|Timespan|Guid|String|ByteArray|Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
 
-    <xs:simpleType name="LogicType">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="OR|Or|or|AND|And|and" />
-        </xs:restriction>
-    </xs:simpleType>
+  <xs:simpleType name="LogicType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="OR|Or|or|AND|And|and" />
+    </xs:restriction>
+  </xs:simpleType>
 
-    <xs:complexType name="Element">
-        <xs:attribute name="Name" type="Identifier"  use="required"/>
-        <xs:attribute name="Version" type="xs:unsignedInt" default="1"/>
-    </xs:complexType>
+  <xs:complexType name="Element">
+    <xs:attribute name="Name" type="Identifier"  use="required"/>
+    <xs:attribute name="Version" type="xs:unsignedInt" default="1"/>
+  </xs:complexType>
 
-    <xs:complexType name="FieldElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:attribute name="Type" type="FieldType"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="FieldElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="Type" type="FieldType"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:complexType name="DataElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:sequence>
-                    <xs:element name="Fields">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Field" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="DataElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="Fields">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Field" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:complexType name="EventElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:sequence>
-                    <xs:element name="ContentData">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Data" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="EventElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="ContentData">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:complexType name="ActionElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:sequence>
-                    <xs:element name="InputData">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Data" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    <xs:element name="OutputEvents">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="ActionElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="InputData">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="OutputEvents">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:complexType name="ConditionElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:sequence>
-                    <xs:element name="Events">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="ConditionElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="Events">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:complexType name="RuleElement">
-        <xs:complexContent>
-            <xs:extension base="Element">
-                <xs:sequence>
-                    <xs:element name="Events">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    <xs:element name="Conditions">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Condition" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    <xs:element name="Actions">
-                        <xs:complexType>
-                            <xs:sequence>
-                              <xs:element name="Action" type="Element" minOccurs="0" maxOccurs="unbounded"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                </xs:sequence>
-                <xs:attribute name="Logic" type="LogicType" use="optional" default="AND"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+  <xs:complexType name="RuleElement">
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="Events">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Conditions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Condition" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Actions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Action" type="Element" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Logic" type="LogicType" use="optional" default="AND"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
-    <xs:element name="Application">
-        <xs:complexType>
+  <xs:complexType name="StateMachineElement">
+    <xs:complexContent>
+      <xs:extension base="ActionElement">
+        <xs:sequence>
+          <xs:element name="StateTransitions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Transition" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Event" type="Element" minOccurs="0" maxOccurs="1"/>
+                      <xs:element name="Action" type="Element" minOccurs="1" maxOccurs="1"/>
+                    </xs:sequence>
+                    <xs:attribute name="Start" type="xs:boolean" default="false"/>
+                    <xs:attribute name="Final" type="xs:boolean" default="false"/>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute name="Name" type="Identifier" use="required"/>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Application">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FieldElements">
+          <xs:complexType>
             <xs:sequence>
-                <xs:element name="FieldElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="FieldElement" type="FieldElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="DataElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="DataElement" type="DataElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="EventElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="EventElement" type="EventElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="ActionElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="ActionElement" type="ActionElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="ConditionElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="ConditionElement" type="ConditionElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="RuleElements">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="RuleElement" type="RuleElement" minOccurs="0" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+              <xs:element name="FieldElement" type="FieldElement" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="Name" type="Identifier" use="required"/>
-        </xs:complexType>
-    </xs:element>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataElements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DataElement" type="DataElement" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EventElements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EventElement" type="EventElement" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ActionElements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ActionElement" type="ActionElement" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ConditionElements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ConditionElement" type="ConditionElement" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RuleElements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RuleElement" type="RuleElement" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Name" type="Identifier" use="required"/>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

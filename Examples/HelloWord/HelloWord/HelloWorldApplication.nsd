@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HelloWorldApplication">
+  <FieldElements>
+    <FieldElement Name="PersonName" Type="String" />
+    <FieldElement Name="PersonId" Type="Integer" />
+    <FieldElement Name="PersonId" Version="2" Type="String" />
+    <FieldElement Name="PersonId" Version="3" Type="ULong" />
+    <FieldElement Name="PersonId" Version="4" Type="String" />
+    <FieldElement Name="FirstName" Type="String" />
+    <FieldElement Name="LastName" Type="String" />
+  </FieldElements>
+  <DataElements>
+    <DataElement Name="Person">
+      <Fields>
+        <Field Name="PersonId" />
+        <Field Name="PersonName" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Person" Version="2">
+      <Fields>
+        <Field Name="PersonId" Version="2" />
+        <Field Name="FirstName" />
+        <Field Name="LastName" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Person" Version="3">
+      <Fields>
+        <Field Name="FirstName" />
+        <Field Name="LastName" />
+      </Fields>
+    </DataElement>
+  </DataElements>
+  <EventElements>
+    <EventElement Name="AskNameEvent">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="AskNameCompletedEvent">
+      <ContentData>
+        <Data Name="Person" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="SayHelloCompletedEvent">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="AskFirstNameEvent">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="AskFirstNameCompletedEvent">
+      <ContentData>
+        <Data Name="Person" Version="3" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="AskLastNameCompletedEvent">
+      <ContentData>
+        <Data Name="Person" Version="3" />
+      </ContentData>
+    </EventElement>
+  </EventElements>
+  <ActionElements>
+    <ActionElement Name="AskNameAction">
+      <InputData />
+      <OutputEvents>
+        <Event Name="AskNameCompletedEvent" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="SayHelloAction">
+      <InputData>
+        <Data Name="Person" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="SayHelloCompletedEvent" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="ApplicationExitAction">
+      <InputData />
+      <OutputEvents />
+    </ActionElement>
+    <ActionElement Name="AskFirstNameAction">
+      <InputData />
+      <OutputEvents>
+        <Event Name="AskFirstNameCompletedEvent" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="AskLastNameAction">
+      <InputData>
+        <Data Name="Person" Version="3" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="AskLastNameCompletedEvent" />
+      </OutputEvents>
+    </ActionElement>
+  </ActionElements>
+  <ConditionElements>
+    <ConditionElement Name="CheckPersonName">
+      <Events>
+        <Event Name="AskNameCompletedEvent" />
+      </Events>
+    </ConditionElement>
+    <ConditionElement Name="CheckFirstName">
+      <Events>
+        <Event Name="AskLastNameCompletedEvent" />
+      </Events>
+    </ConditionElement>
+    <ConditionElement Name="CheckLastName">
+      <Events>
+        <Event Name="AskLastNameCompletedEvent" />
+      </Events>
+    </ConditionElement>
+  </ConditionElements>
+  <RuleElements>
+    <RuleElement Name="AskNameRule">
+      <Events>
+        <Event Name="AskNameEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="AskNameAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="SayHelloRule" Logic="OR">
+      <Events>
+        <Event Name="AskNameCompletedEvent" />
+        <Event Name="AskLastNameCompletedEvent" />
+      </Events>
+      <Conditions>
+        <Condition Name="CheckPersonName" />
+        <Condition Name="CheckFirstName" />
+        <Condition Name="CheckLastName" />
+      </Conditions>
+      <Actions>
+        <Action Name="SayHelloAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="ApplicationExitRule" Logic="OR">
+      <Events>
+        <Event Name="SayHelloCompletedEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="ApplicationExitAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="AskFirstNameRule">
+      <Events>
+        <Event Name="AskFirstNameEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="AskFirstNameAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="AskLastNameRule">
+      <Events>
+        <Event Name="AskFirstNameCompletedEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="AskLastNameAction" />
+      </Actions>
+    </RuleElement>
+  </RuleElements>
+</Application>

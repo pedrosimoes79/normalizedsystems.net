@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="PromotionsApplication">
+  <FieldElements>
+    <FieldElement Name="BasketId" Type="Guid" />
+    <FieldElement Name="Barcode" Type="String" />
+    <FieldElement Name="Description" Type="String" />
+    <FieldElement Name="Quantity" Type="Decimal" />
+    <FieldElement Name="UnitPrice" Type="Decimal" />
+    <FieldElement Name="Total" Type="Decimal" />
+    <FieldElement Name="Code" Type="String" />
+    <FieldElement Name="Value" Type="Decimal" />
+    <FieldElement Name="Discount" Type="Decimal" />
+    <FieldElement Name="Type" Type="Integer" />
+    <FieldElement Name="PromotionCode" Type="String" />
+    <FieldElement Name="SubTotal" Type="Decimal" />
+    <FieldElement Name="DiscountTotal" Type="Decimal" />
+    <FieldElement Name="SalesLineId" Type="Guid" />
+    <FieldElement Name="Priority" Type="Integer" />
+    <FieldElement Name="TakeQuantity" Type="Integer" />
+    <FieldElement Name="OfferQuantity" Type="Integer" />
+    <FieldElement Name="BenefitCode" Type="String" />
+  </FieldElements>
+  <DataElements>
+    <DataElement Name="Basket">
+      <Fields>
+        <Field Name="BasketId" />
+        <Field Name="Total" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="SalesLine">
+      <Fields>
+        <Field Name="BasketId" />
+        <Field Name="SalesLineId" />
+        <Field Name="Barcode" />
+        <Field Name="Description" />
+        <Field Name="Quantity" />
+        <Field Name="UnitPrice" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Payment">
+      <Fields>
+        <Field Name="BasketId" />
+        <Field Name="Code" />
+        <Field Name="Description" />
+        <Field Name="Value" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Promotion">
+      <Fields>
+        <Field Name="PromotionCode" />
+        <Field Name="Barcode" />
+        <Field Name="Type" />
+        <Field Name="Discount" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="SalesLine" Version="2">
+      <Fields>
+        <Field Name="BasketId" />
+        <Field Name="SalesLineId" />
+        <Field Name="Barcode" />
+        <Field Name="Description" />
+        <Field Name="Quantity" />
+        <Field Name="UnitPrice" />
+        <Field Name="PromotionCode" />
+        <Field Name="Discount" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Basket" Version="2">
+      <Fields>
+        <Field Name="BasketId" />
+        <Field Name="Total" />
+        <Field Name="SubTotal" />
+        <Field Name="DiscountTotal" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Promotion" Version="2">
+      <Fields>
+        <Field Name="PromotionCode" />
+        <Field Name="Barcode" />
+        <Field Name="Type" />
+        <Field Name="Discount" />
+        <Field Name="Priority" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="DirectDiscountPromotion">
+      <Fields>
+        <Field Name="PromotionCode" />
+        <Field Name="Type" />
+        <Field Name="Discount" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="TakeXPayYPromotion">
+      <Fields>
+        <Field Name="PromotionCode" />
+        <Field Name="TakeQuantity" />
+        <Field Name="OfferQuantity" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Promotion" Version="3">
+      <Fields>
+        <Field Name="PromotionCode" />
+        <Field Name="Barcode" />
+        <Field Name="Type" />
+        <Field Name="Discount" />
+        <Field Name="Priority" />
+        <Field Name="BenefitCode" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Customer">
+      <Fields>
+        <Field Name="Barcode" />
+      </Fields>
+    </DataElement>
+    <DataElement Name="Benefit">
+      <Fields>
+        <Field Name="BenefitCode" />
+      </Fields>
+    </DataElement>
+  </DataElements>
+  <EventElements>
+    <EventElement Name="BeginSaleEvent">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="BeginSaleSuccess">
+      <ContentData>
+        <Data Name="Basket" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="AddProductEvent">
+      <ContentData>
+        <Data Name="SalesLine" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="AddProductSuccess">
+      <ContentData>
+        <Data Name="SalesLine" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="RequestTotalEvent">
+      <ContentData>
+        <Data Name="Basket" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="RequestTotalSuccess">
+      <ContentData>
+        <Data Name="Basket" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="AddPaymentEvent">
+      <ContentData>
+        <Data Name="Payment" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="AddPaymentSuccess">
+      <ContentData>
+        <Data Name="Payment" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="EndSaleEvent">
+      <ContentData>
+        <Data Name="Basket" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="EndSaleSuccess">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="FindPromotionSuccess">
+      <ContentData>
+        <Data Name="SalesLine" />
+        <Data Name="Promotion" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="ApplyPromotionSuccess">
+      <ContentData>
+        <Data Name="SalesLine" Version="2" />
+        <Data Name="Promotion" />
+        <Data Name="Basket" Version="2" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="FindBasketPromSuccess">
+      <ContentData>
+        <Data Name="Basket" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="ApplyBasketPromSuccess">
+      <ContentData />
+    </EventElement>
+    <EventElement Name="SetCustomerEvent">
+      <ContentData>
+        <Data Name="Basket" />
+        <Data Name="Customer" />
+      </ContentData>
+    </EventElement>
+    <EventElement Name="SetCustomerSuccess">
+      <ContentData />
+    </EventElement>
+  </EventElements>
+  <ActionElements>
+    <ActionElement Name="BeginSaleAction">
+      <InputData />
+      <OutputEvents>
+        <Event Name="BeginSaleSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="AddProductAction">
+      <InputData>
+        <Data Name="SalesLine" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="AddProductSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="RequestTotalAction">
+      <InputData>
+        <Data Name="Basket" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="RequestTotalSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="AddPaymentAction">
+      <InputData>
+        <Data Name="Payment" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="AddPaymentSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="EndSaleAction">
+      <InputData>
+        <Data Name="Basket" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="EndSaleSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="FindPromotionAction">
+      <InputData>
+        <Data Name="SalesLine" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="FindPromotionSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="ApplyPromotionAction">
+      <InputData>
+        <Data Name="SalesLine" />
+        <Data Name="Promotion" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="ApplyPromotionSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="FindBasketPromAction">
+      <InputData>
+        <Data Name="Basket" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="FindBasketPromSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="ApplyBasketPromAction">
+      <InputData>
+        <Data Name="Basket" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="ApplyBasketPromSuccess" />
+      </OutputEvents>
+    </ActionElement>
+    <ActionElement Name="SetCustomerAction">
+      <InputData>
+        <Data Name="Basket" />
+        <Data Name="Customer" />
+      </InputData>
+      <OutputEvents>
+        <Event Name="SetCustomerSuccess" />
+      </OutputEvents>
+    </ActionElement>
+  </ActionElements>
+  <ConditionElements />
+  <RuleElements>
+    <RuleElement Name="BeginSaleRule">
+      <Events>
+        <Event Name="BeginSaleEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="BeginSaleAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="AddProductRule">
+      <Events>
+        <Event Name="AddProductEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="AddProductAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="RequestTotalRule">
+      <Events>
+        <Event Name="RequestTotalEvent" />
+        <Event Name="ApplyBasketPromSuccess" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="RequestTotalAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="AddPaymentRule">
+      <Events>
+        <Event Name="AddPaymentEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="AddPaymentAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="EndSaleRule">
+      <Events>
+        <Event Name="EndSaleEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="EndSaleAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="FindPromotionRule">
+      <Events>
+        <Event Name="AddProductSuccess" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="FindPromotionAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="ApplyPromotionRule">
+      <Events>
+        <Event Name="FindPromotionSuccess" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="ApplyPromotionAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="FindBasketPromRule">
+      <Events>
+        <Event Name="RequestTotalEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="FindBasketPromAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="ApplyBasketPromRule">
+      <Events>
+        <Event Name="FindBasketPromSuccess" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="ApplyBasketPromAction" />
+      </Actions>
+    </RuleElement>
+    <RuleElement Name="SetCustomerRule">
+      <Events>
+        <Event Name="SetCustomerEvent" />
+      </Events>
+      <Conditions />
+      <Actions>
+        <Action Name="SetCustomerAction" />
+      </Actions>
+    </RuleElement>
+  </RuleElements>
+</Application>

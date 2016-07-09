@@ -49,18 +49,18 @@ namespace NormalizedSystems.Net.Templates
             
             #line default
             #line hidden
-            this.Write("\r\nusing System;\r\nusing System.Linq;\r\nusing System.Threading;\r\nusing System.Thread" +
-                    "ing.Tasks;\r\nusing System.Collections.Generic;\r\nusing NormalizedSystems.Net;\r\n\r\nn" +
-                    "amespace ");
+            this.Write("using System;\r\nusing System.Linq;\r\nusing System.Threading;\r\nusing System.Threadin" +
+                    "g.Tasks;\r\nusing System.Collections.Generic;\r\nusing NormalizedSystems.Net;\r\n\r\nnam" +
+                    "espace ");
             
-            #line 30 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 29 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.codenamespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 32 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var field in model.FieldElements) 
 	{ 
@@ -69,13 +69,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 36 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new FieldElementTemplate(field, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 36 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -83,7 +83,7 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 39 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 38 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var data in model.DataElements) 
 	{ 
@@ -92,13 +92,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 42 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new DataElementTemplate(data, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 42 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -106,7 +106,7 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 46 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var e in model.EventElements) 
 	{ 
@@ -115,13 +115,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 50 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 49 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new EventElementTemplate(e, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 50 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 49 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -129,7 +129,7 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 53 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 52 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var action in model.ActionElements) 
 	{ 
@@ -138,13 +138,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 57 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 56 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new ActionElementTemplate(action, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 57 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 56 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -152,7 +152,7 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 60 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var condition in model.ConditionElements) 
 	{ 
@@ -161,13 +161,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 64 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 63 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new ConditionElementTemplate(condition, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 64 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 63 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -175,7 +175,7 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 67 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 66 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
  
 	foreach(var rule in model.RuleElements) 
 	{ 
@@ -184,13 +184,13 @@ namespace NormalizedSystems.Net.Templates
             #line default
             #line hidden
             
-            #line 71 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 70 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((new RuleElementTemplate(rule, model)).TransformText()));
             
             #line default
             #line hidden
             
-            #line 71 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 70 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
 
 	} 
 
@@ -199,35 +199,35 @@ namespace NormalizedSystems.Net.Templates
             #line hidden
             this.Write("\r\n    public partial class ");
             
-            #line 75 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 74 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write(" : NormalizedSystems.Net.Application\r\n\t{\r\n        public ");
             
-            #line 77 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 76 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n");
             
-            #line 79 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 78 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
   foreach(var rule in model.RuleElements) { 
             
             #line default
             #line hidden
             this.Write("            AddRule<");
             
-            #line 80 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 79 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(rule.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n");
             
-            #line 81 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
+            #line 80 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\ApplicationTemplate.tt"
   } 
             
             #line default

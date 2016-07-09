@@ -49,9 +49,9 @@ namespace NormalizedSystems.Net.Templates
             
             #line default
             #line hidden
-            this.Write("\tpublic partial class ");
+            this.Write("    [Serializable]\r\n\tpublic partial class ");
             
-            #line 22 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 23 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
@@ -59,111 +59,111 @@ namespace NormalizedSystems.Net.Templates
             this.Write(" : NormalizedSystems.Net.DataElement\r\n\t{\r\n\t\tpublic override ElementInfo ElementIn" +
                     "fo { get; } = new ElementInfo() { Name = \"");
             
-            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 25 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name));
             
             #line default
             #line hidden
             this.Write("\", Version = ");
             
-            #line 24 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 25 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Version));
             
             #line default
             #line hidden
             this.Write(" };\r\n\r\n");
             
-            #line 26 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	foreach(var field in model.Fields) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 28 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 27 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 28 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            get\r\n            {\r\n                return Fields[\"");
             
-            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 32 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("\"].Cast<");
             
-            #line 31 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 32 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.FullName));
             
             #line default
             #line hidden
             this.Write(">();\r\n            }\r\n            set\r\n            {\r\n\t\t\t\tFields[\"");
             
-            #line 35 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 36 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("\"] = value;\r\n            }\r\n        }\r\n\r\n");
             
-            #line 39 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 40 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	} 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 40 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 41 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.FullName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n");
             
-            #line 42 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	foreach(var field in model.Fields) { 
             
             #line default
             #line hidden
             this.Write("            Fields[\"");
             
-            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 44 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("\"] = new ");
             
-            #line 43 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 44 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.FullName));
             
             #line default
             #line hidden
             this.Write("();\r\n");
             
-            #line 44 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 45 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	} 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 47 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 48 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	if(model.Version > 1) { 
             
             #line default
             #line hidden
             
-            #line 48 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 49 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 		for(uint v = model.Version - 1; v > 0; v--) {
 			var name = model.Name + (v > 1 ? "Version" + v : "");
 
@@ -172,62 +172,62 @@ namespace NormalizedSystems.Net.Templates
             #line hidden
             this.Write("\t\tpublic static implicit operator ");
             
-            #line 51 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 52 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 51 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 52 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.model.FullName));
             
             #line default
             #line hidden
             this.Write(" obj)\r\n        {\r\n");
             
-            #line 53 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 54 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 			if(v == model.Version - 1) { 
             
             #line default
             #line hidden
             this.Write("            var ret = new ");
             
-            #line 54 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 55 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(name));
             
             #line default
             #line hidden
             this.Write("();\r\n\t\t\tobj.Convert(ret);\r\n\t\t\treturn ret;\r\n");
             
-            #line 57 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 58 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 			} else { 
             
             #line default
             #line hidden
             this.Write("\t\t\t\treturn ");
             
-            #line 58 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join("", Enumerable.Range((int)v, (int)model.Version - 1).Select(i => "(" + model.Name + (i > 1 ? "Version" + i : "") + ")").ToArray())));
             
             #line default
             #line hidden
             this.Write("obj;\r\n");
             
-            #line 59 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 60 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 			} 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 62 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 63 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 		} 
             
             #line default
             #line hidden
             
-            #line 63 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
+            #line 64 "C:\Users\pedro\Dropbox\Projects\NormalizedSystems\NormalizedSystems.Net.Templates\DataElementTemplate.tt"
 	} 
             
             #line default
